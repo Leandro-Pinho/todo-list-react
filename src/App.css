@@ -3,6 +3,10 @@ body {
   color: #fff;
 }
 
+.Container {
+  margin: 50px 0;
+}
+
 .App {
   text-align: center;
 }
