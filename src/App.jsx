@@ -30,7 +30,8 @@ function App() {
 
   // Delete task
   const deleteTask = (id) => {
-
+    let newTasks = toDo.filter(task => task.id !== id);
+    setToDo(newTasks);
   }
 
   // Mark task as done or completed
@@ -108,7 +109,7 @@ function App() {
                 <div className="iconWrap">
                   <span title="Completed / Not Completed"><FontAwesomeIcon icon={faCircleCheck} /></span>
                   <span title="Edit"><FontAwesomeIcon icon={faPen} /></span>
-                  <span title='Delete'><FontAwesomeIcon icon={faTrashCan} /></span>
+                  <span title='Delete' onClick={() => deleteTask(task.id)}><FontAwesomeIcon icon={faTrashCan} /></span>
                 </div>
               </div>
             </React.Fragment>
