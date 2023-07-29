@@ -52,6 +52,29 @@ function App() {
     <div className="Container App">
       <h2>To Do List App (ReactJS)</h2>
 
+      {/* update task input */}
+      <div className="row">
+        <div className="col">
+          <input type="text" className='form-control form-control-lg' />
+        </div>
+        <div className="col-auto">
+          <button className='btn btn-lg btn-success mr-20'>Update</button>
+          <button className='btn btn-lg btn-warning'>Cancel</button>
+        </div>
+      </div>
+      <br />
+
+      {/* new task input */}
+      <div className="row">
+        <div className="col">
+          <input type="text" className='form-control form-control-lg' />
+        </div>
+        <div className="col-auto">
+          <button className='btn btn-lg btn-success'>Add Task</button>
+        </div>
+      </div>
+      <br />
+
       {/* Display ToDos */}
       {toDo && toDo.length ? '' : 'No Tasks...'}
 
@@ -67,9 +90,9 @@ function App() {
                   <span className='taskText'>{task.title}</span>
                 </div>
                 <div className="iconWrap">
-                  <span><FontAwesomeIcon icon={faCircleCheck} /></span>
-                  <span><FontAwesomeIcon icon={faPen} /></span>
-                  <span><FontAwesomeIcon icon={faTrashCan} /></span>
+                  <span title="Completed / Not Completed"><FontAwesomeIcon icon={faCircleCheck} /></span>
+                  <span title="Edit"><FontAwesomeIcon icon={faPen} /></span>
+                  <span title='Delete'><FontAwesomeIcon icon={faTrashCan} /></span>
                 </div>
               </div>
             </React.Fragment>
