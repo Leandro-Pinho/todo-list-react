@@ -20,7 +20,12 @@ function App() {
 
   // Add task
   const addTask = () => {
-
+    if (newTask) {
+      let num = toDo.length + 1;
+      let newEntry = { id: num, title: newTask, status: false }
+      setToDo([...toDo, newEntry])
+      setNewTask('')
+    }
   }
 
   // Delete task
@@ -52,6 +57,27 @@ function App() {
     <div className="Container App">
       <h2>To Do List App (ReactJS)</h2>
 
+      {/* new task input */}
+      <div className="row">
+        <div className="col">
+          <input
+            type="text"
+            value={newTask}
+            onChange={(e) => setNewTask(e.target.value)}
+            className='form-control form-control-lg'
+          />
+        </div>
+        <div className="col-auto">
+          <button
+            onClick={addTask}
+            className='btn btn-lg btn-success'
+          >
+            Add Task
+          </button>
+        </div>
+      </div>
+      <br />
+
       {/* update task input */}
       <div className="row">
         <div className="col">
@@ -64,16 +90,6 @@ function App() {
       </div>
       <br />
 
-      {/* new task input */}
-      <div className="row">
-        <div className="col">
-          <input type="text" className='form-control form-control-lg' />
-        </div>
-        <div className="col-auto">
-          <button className='btn btn-lg btn-success'>Add Task</button>
-        </div>
-      </div>
-      <br />
 
       {/* Display ToDos */}
       {toDo && toDo.length ? '' : 'No Tasks...'}
