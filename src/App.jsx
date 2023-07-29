@@ -35,8 +35,14 @@ function App() {
   }
 
   // Mark task as done or completed
-  const markDone = () => {
-
+  const markDone = (id) => {
+    let newTask = toDo.map(task => {
+      if (task.id === id) {
+        return ({ ...task, status: !task.status })
+      }
+      return task;
+    })
+    setToDo(newTask);
   }
 
   // Cancel update
@@ -107,8 +113,11 @@ function App() {
                   <span className='taskText'>{task.title}</span>
                 </div>
                 <div className="iconWrap">
-                  <span title="Completed / Not Completed"><FontAwesomeIcon icon={faCircleCheck} /></span>
-                  <span title="Edit"><FontAwesomeIcon icon={faPen} /></span>
+                  <span title="Completed / Not Completed" onClick={() => markDone(task.id)}><FontAwesomeIcon icon={faCircleCheck} /></span>
+                  {/* se o status for completed não aparece o icone para editar */}
+                  {task.status ? null : (
+                    <span title="Edit" onClick={() => UpdateTask(task.id)}><FontAwesomeIcon icon={faPen} /></span>
+                  )}
                   <span title='Delete' onClick={() => deleteTask(task.id)}><FontAwesomeIcon icon={faTrashCan} /></span>
                 </div>
               </div>
